@@ -12,10 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -32,13 +29,13 @@ public class LocalFileController {
 
     @GetMapping(FILES)
     public List<LocalFile> getFiles() throws IOException {
-       return localFileService.getFiles();
+        return localFileService.getFiles();
     }
 
     // @RequestMapping(method = RequestMethod.POST, value = FILES, produces = "applicaton/json")
     @PostMapping(UPLOAD_PATH)
-    public ResponseEntity<LocalFile> uploadFile(@RequestParam("file")MultipartFile file) throws IOException {
-        if(file.getSize() < 10_000_000L) {
+    public ResponseEntity<LocalFile> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+        if (file.getSize() < 10_000_000L) {
             return new ResponseEntity<>(localFileService.uploadFile(file), HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
@@ -62,6 +59,6 @@ public class LocalFileController {
 
     @DeleteMapping(DELETE_PATH + "{file}")
     public void deleteFile(@PathVariable String file) {
-       localFileService.deleteFile(file);
+        localFileService.deleteFile(file);
     }
 }
