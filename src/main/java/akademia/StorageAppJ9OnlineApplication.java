@@ -3,8 +3,13 @@ package akademia;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 
-@PropertySource("classpath:dbconfig.properties")
+@PropertySources({
+        @PropertySource(value = "classpath:dbconfig.properties", ignoreResourceNotFound = true),
+        @PropertySource(value = "classpath:config.properties")
+     }
+)
 @SpringBootApplication
 public class StorageAppJ9OnlineApplication {
 

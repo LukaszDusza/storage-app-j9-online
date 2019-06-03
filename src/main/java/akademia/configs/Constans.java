@@ -1,11 +1,15 @@
 package akademia.configs;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public class Constans {
     public static final String TABLE_NAME = "files";
 
     /* local files*/
     public static String CONTEXT_FILE_PATH = "";
-    public static final String LOCAL_FILE_PATH = "C://uploads//";
+
+    @Value("${file.local.path}")
+    public static String LOCAL_FILE_PATH;
 
     /*API*/
     public static final String FILES = "/api/v1/files";

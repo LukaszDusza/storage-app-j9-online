@@ -42,7 +42,6 @@ public class LocalFileController {
         }
     }
 
-    //http://localhost:8080/api/files/{file}
     @GetMapping(DOWNLOAD_PATH + "{file}")
     public ResponseEntity<?> downloadFile(@PathVariable String file) throws IOException {
         Resource resource = localFileService.downloadFile(file);
